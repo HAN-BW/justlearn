@@ -5,8 +5,10 @@ import pandas
 import openai
 from pandasai import Agent
 from pandasai import SmartDataframe
+from pandasai.ee.agents.semantic_agent import SemanticAgent
 from pandasai.schemas.df_config import Config
-from pandasai.llm.azure_openai import AzureOpenAI
+# from pandasai.llm.azure_openai import AzureOpenAI
+from llama_index.llms.azure_openai import AzureOpenAI
 from pandasai.responses.streamlit_response import StreamlitResponse
 from llama_index.embeddings.azure_openai import AzureOpenAIEmbedding
 from pandasai.llm.local_llm import LocalLLM
@@ -34,7 +36,7 @@ def test1():
 
 
 def test2():
-    df = pandas.read_excel("test.xlsx", sheet_name=0)
+    df = pandas.read_excel("test2.xlsx", sheet_name=0)
     api_key = "c4213aef4c494536846e3a401dae1ab2"
     llm = LocalLLM(
         model="qwen1.5-72b-chat",
@@ -56,7 +58,8 @@ def test2():
     # agent.add_message("筛选出前3条task_statu为successful且status为OK的数据")
     response = agent.chat(
         # "针对上述数据生成以id为横坐标，lines为纵坐标的图表",
-        "筛选出前3条task_statu为successful且status为OK的数据",
+        # "Given a table named vars containing JSON data in a multi-level structure, the task is to extract all values corresponding to the key \"spring.datasource.username\" and generate a new table with columns named name, env_name, and key",
+        "表的vars是一列json格式的数据，他会有多层结构，请逐层分析，提取出所有key为\"spring.datasource.username\"的值，生成一个name,env_name,key的新表"
     )
     print(str(response))
 
@@ -106,4 +109,4 @@ def test3():
     )
 
 
-test3()
+test2()

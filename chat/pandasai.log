@@ -3071,3 +3071,764 @@ result
 
 [3 rows x 68 columns]}
 2024-06-25 20:10:04 [INFO] Executing Step 8: ResultParsing
+2024-07-04 17:48:21 [INFO] Question: 表的vars是一列json格式的数据，他会有多层结构，请逐层分析，提取出所有key为"spring.datasource.username"的值，生成一个name,env_name,key的新表
+2024-07-04 17:48:23 [INFO] Running PandasAI with local LLM...
+2024-07-04 17:48:23 [INFO] Prompt ID: badce3f2-9ca4-46f8-b72c-66961a8f37cb
+2024-07-04 17:48:23 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-07-04 17:48:23 [INFO] Executing Step 0: ValidatePipelineInput
+2024-07-04 17:48:23 [INFO] Executing Step 1: CacheLookup
+2024-07-04 17:48:23 [INFO] Executing Step 2: PromptGeneration
+2024-07-04 17:48:23 [INFO] Using prompt: <dataframe>
+dfs[0]:26x3
+name,env_name,vars
+beehive-public-service,dev,"{""Deployment:beehive-cloud-service"":{""parameter"":""-Xms2048M -Xmx2048M -XX:+PrintGCDateStamps -XX:+PrintGCDetails -Xloggc:./gclogs -Ddubbo.reference.check=false -Djava.library.path=/opt/beehivedata/data/javaLibraryPath"",""bob.serviceAccNo"":""中交商业保理有限公司"",""xib.request_url"":""https://xib02.test.xib.com.cn:58080/ifspeesi/common/do/api/scf-1040/"",""tianma.baseUrl"":""https://api-test.tianma.cn:8500/gateway-web"",""bocom.rb.switch"":""false"",""lzbank.down-file.url"":""https://etest.lzbank.com:20059/tmpFileDefault?filename="",""spdb.orgId"":""XYZC"",""spdb.subOrgId"":""XYED"",""spdbUrl"":""https://etest4.spdb.com.cn/ia/gateway.do"",""spdb.privateKey"":""MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAKE3uyHGNdSz37uCzMOFjw//hozB/qcZKsPengxvhxMac1fYO89T62RlQGGCoaHkMpb3zdv7yoZ+RbbCCPuX2/LUqUMbiX7rdVD8LuhEOASN7Jzq2keLHtfYPcBIwHRZDrb0d2rtVCUcSN0IQjbgh88s31UnoGTrx0ixeRwQsHLHAgMBAAECgYBlDB5hg++3mupviAM5xZuuxlUaInmvWGnijMT5PGooQhrrg1+xioLu0TuyIoOWigZfc4B3EnGVLM4bR7EDqOI1acYWi111wGUBZtf+LiejwD7U6g0HBe6sQt0FW9SBzKdIAwT1T6FXGwmJtfPB/pqhVhKaZzyyOgUm5DjJq0X/eQJBANQ8jAtMpcqEBWL+nQLWO5UfZ++ojK5idBQiHywAAvB8HlK4gkS+/NsWQMn4G16Lk8zemCi1Rl+4nqxRmDqeFqMCQQDCdgYlrsJxw2JMCBVrtlG0/3TH7bYVGHaHIV4pJf4kmpG8tNd9y2doz9AXl0GT967ME2guyybIFvWyBNIuSMmNAkBxe+qaRCLGde93bpPAJ5N2enOWB3cp68UL2u72FQ99TbDdJIGrhsAn2e9Mz5i65kFio4eTBNMbbdmSZJLUjSGnAkAghTxh8OfzvokhzfhHGyZu7onJJafdv0mTL7FfkEsANBlLRbMEBpA0pwxV5aXB6RoCZvx1VuQVckGEk+nSc7nBAkAB/2SouEqPuCRpUyS4SfIJuUZLqcZ0G06qbaDcKo+lEYtLLfgFnIysDzSrvF6nJ7uvv4MRZOkI7dAtqSfqNpya"",""spdb.publicKey"":""MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCoe28W3uXYcLmczZHg166R8e6OZPriFq22NfvHOjqoKtgH2o5yub9dDn0FvOcTVJ/+E86EXAjgmiti2TuECaEJoLONceOY2TbyP3/BBnCb7dqArN0tg2vfPr+lVXw16En4Hh5TUXA0mJWRdhN9SkC7XUxr2vSHhAsdgqTyJG1XlwIDAQAB"",""bocom.direct.proxy.server.ip"":""172.16.84.137"",""lzbank.upload-file.url"":""https://etest.lzbank.com:20039/tmpFileDefault"",""bob.serviceAcc"":""20000060390200044509182"",""yinhekeji.baseUrl"":""https://yinghe-agw.hrlyit.com/gateway-web"",""bocom.cash.apply.url"":""/api/lianyir/gdrcvBalanceInfo/v1"",""boc.termid"":""E120133137033"",""boc.custid"":""500000613"",""boc.cusopr"":""500001025"",""szbank.reqUrl"":""https://becptt.szbank.net/becpChannelUAT/openServlet"",""hfbank.system.date"":""2026-06-20"",""CDRCB.SFTP_HOST_NAME"":""qa.sftp.lls.com"",""hzbank.use.newCfgs"":""true"",""thfj.http.url"":""https://openapi-test.trinapower.com/dms-bank-api/test"",""eacf.url"":""http://llt-test-agw.hbsltzb.com:8888/transaction-web/"",""cebbank.request.url"":""http://ceb-test.lls.com:20142"",""spring.datasource.url"":""jdbc:mysql://xyl-local-mycat.lls.com:8066/pubDB-uat?allowMultiQueries=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&connectTimeout=5000&socketTimeout=40000""}}"
+beehive-cloud-service,live2,"{""Deployment:beehive-public-service"":{""lls.multi.tenant.shard.service.enabled"":""false"",""spring.datasource.druid.removeAbandoned"":""true"",""spring.datasource.druid.removeAbandonedTimeoutMillis"":""3000000"",""spring.datasource.druid.logAbandoned"":""true"",""spring.datasource.druid.initialSize"":""10"",""spring.datasource.druid.maxActive"":""100"",""spring.datasource.druid.removeAbandonedTimeout"":""3000"",""spring.datasource.url"":""jdbc:mysql://mysql01.qa.lls.com:5340/beehive_public?allowMultiQueries=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false"",""spring.datasource.username"":""lls"",""spring.datasource.password"":""Qll8QZTIcs36gTNCpd5CK1YL5onNsWzmZncXluBAax4adQifI/z8/zjEFgpNnCxDyetkkUi33mwUQt0vK57M8w=="",""spring.datasource.druid.publicKey"":""MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKI4s2bGdUoavpb7LoYGBADbSKDgDEzFUXaPujyrswRZGtMgvHN2L190cTwNgdcU3yaZPV/m+EwdbsyEgv9Z3d0CAwEAAQ==""}}"
+beehive-param-service,qa,"{""Deployment:beehive-cloud-service"":{""parameter"":""-Xms2048M -Xmx2048M -XX:+PrintGCDateStamps -XX:+PrintGCDetails -Xloggc:./gclogs -Ddubbo.reference.check=false -Djava.library.path=/opt/beehivedata/data/javaLibraryPath"",""freeMock.switch"":""false"",""bob.serviceAccNo"":""蔷薇聚信（北京）科技有限公司"",""freeMock.zyBalanceQueryResult"":""{ \""STATUE\"": \""01\"", \""RATE\"": \""100\"", \""FEE_RATE\"": \""1\"", \""ACCT_NO\"": \""419999010320011302\"", \""ACCT_NAME\"": \""中原银行保证金-ZJ勿动测试\"", \""ACCT_BANK_NAME\"": \""中原银行股份有限公司\"", \""ACC_VAL_GRC_PRD\"": \""5\"" }"",""freeMock.zyAssetInfoPushResult"":""{}"",""freeMock.zyTradeBackgroundInfoPushResult"":""{}"",""freeMock.ZyCashApplyResult"":""{ \""SCF_LOAN_APPLY_NO\"": \""FKSQ11016021350216000000001\"" }"",""freeMock.zyCashApplyResultQueryResult"":""{ \""Row\"": [ { \""PROCESS_STATUS\"":\""04\"" } ] }"",""cbs.front.url"":""http://172.16.201.173:1212"",""cbs.front.key"":""123"",""lzbank.down-file.url"":""https://etest.lzbank.com:20059/tmpFileDefault?filename="",""bocom.direct.proxy.server.ip"":""172.16.84.137"",""cebbank.sftp.hostname"":""qa.sftp.lls.com"",""cebbank.request.url"":""http://ceb-test.lls.com:20141"",""bocom.rb.switch"":""false"",""freeMock.cebFinancierInfoResult"":""{\""status\"":\""0\"",\""companyLicense\"":\""91310106763314112F\"",\""Reg_Address\"":\""南宁市兴宁区昆仑大道5号大嘉汇东盟国际商贸港汽车用品配件广场第33号楼第五层第517-2、518号南宁市兴宁区昆仑大道号大嘉汇东盟国际商贸港汽车用品配件广场第33号楼第五层第517-2、518号南宁市兴宁区昆仑大道5号大嘉汇东盟国际商贸港汽车用品配件广场第33号楼第五层第517-2、518号南宁市兴宁区昆仑大道5号大嘉汇东盟国际商贸港汽车用品配件广场第33号楼第五层第517-2、518号南宁市兴宁区昆仑大道5号大嘉汇东盟国际商贸港汽车用品配\"",\""companyOrgNo\"":\""91310113666099289P\"",\""Tax_Certificate_No\"":\""91310106763314112F\"",\""Local_Tax_No\"":\""91310106763314112F\"",\""companyRegAddress\"":\""南拉xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxXXXXXXXXXXXXXXXXXXXXXXXXXXXX答了\"",\""CUST_POSTCODE\"":\""264000\"",\""Industry_type\"":\""621\"",\""employeesCount\"":\""(1000~5000]\"",\""Listing_Corp_Flag\"":\""1\"",\""principalName\"":\""方佶敏\"",\""FWD191\"":[{\""BEF_ALL_BZ\"":\""2\"",\""BO_Name\"":\""周博潇\""},{\""BEF_ALL_BZ\"":\""2\"",\""BO_Name\"":\""国务院国有资产监督管理委员会\""},{\""BEF_ALL_BZ\"":\""2\"",\""BO_Name\"":\""王同明\""},{\""BEF_ALL_BZ\"":\""2\"",\""BO_Name\"":\""吴连成\""},{\""BEF_ALL_BZ\"":\""2\"",\""BO_Name\"":\""郑家江\""},{\""BEF_ALL_BZ\"":\""1\"",\""BO_Name\"":\""刘丰\""},{\""BEF_ALL_BZ\"":\""2\"",\""BO_Name\"":\""汪先纯\""},{\""BEF_ALL_BZ\"":\""2\"",\""BO_Name\"":\""孔令兵\""}],\""FWD192\"":[{\""Shardholder1_Aml_Type\"":\""0\"",\""Shardholder1_Role_Org_Flag\"":\""2\"",\""ISLEAGLE\"":\""2\"",\""Shardholder1_Name\"":\""阿达的\""}]}"",""freeMock.CebPullImageNoticeResult"":""{\""serialNo\"": \""01392022030714303164426233931097\"", \""resultCode\"": \""0\"", \""RESERVE1\"": \""0\"" }"",""freeMock.CebImageNoQueryResult"":""{\""serialNo\"": \""01392022030714303164426233931097\"", \""resultCode\"": \""0\"",\""imageId\"": \""LYRT20220307143151AE3E0ED2D31E1A\"", \""reason\"": \"" \"",\""FWD181\"": [{\""imageType\"":\""QYSQ\"" }, { \""imageType\"":\""XQSB\"" }, { \""imageType\"":\""BOZJ\"" }, { \""imageType\"":\""SHZJ\"" }, { \""imageType\"":\""DKHT\"" }, { \""imageType\"":\""SFZJ\"" }, { \""imageType\"":\""AJZJ\"" }, { \""imageType\"":\""FPYY\"" }, { \""imageType\"":\""GSZZ\"" } ], \""RESERVE3\"": \"" \"", \""RESERVE4\"": \"" \"", \""RESERVE5\"": \"" \"", \""RESERVE6\"": \"" \"" }"",""freeMock.CebCashAppResult"":""{\""serialNo\"":\""01392022030714350097340806530866\"",\""status\"":\""1\"",\""reason\"":\"" \"",\""RESERVE3\"":\"" \"",\""RESERVE4\"":\"" \"",\""RESERVE5\"": \"" \"", \""RESERVE6\"": \"" \"" }"",""freeMock.CebReplyQueryResult"":""{\""serialNo\"":\""SX000000000000000000000000009736\"",\""status\"": \""0\"",\""failureReason\"": \"" \"",\""PFUHAO\"": \""36542022030021\"",\""CustNO\"":\""2006270368\"", \""appply_quota_no\"":\""8716\"", \""totalAmtIn\"":\""2878859.64\"",\""credTerm\"": \""180\"", \""cycFlag\"": \"" \"", \""approveRateBase\"": \""4.25\"", \""penaltyRate\"": \""0\"",\""validityDate\"":\""20220903\"",\""RESERVE1\"":\"" \"",\""RESERVE2\"":\"" \"", \""RESERVE3\"":\"" \"", \""RESERVE4\"":\"" \"", \""RESERVE5\"":\""\"", \""RESERVE6\"":\"" \"" }"",""freeMock.CebLoanAppResult"":""{ \""serialNo\"": \""01392022030715000043495646585762\"", \""PFUHAO\"": \""36542022030021\"", \""status\"": \""1\"", \""HETHAO\"": \""36542251000001\"", \""JIEJUH\"": \""36542251000001001\"", \""loanStartDate\"": \""20220307\"", \""loanEndDate\"": \""20220831\"", \""insterestRate\"": \""4.25\"" }"",""freeMock.bosc.cashPreAppleQueryWholeResult"":""{ \""serialNo\"": \""01392021120314512134859758729588\"", \""retCode\"": \""-1\"", \""errMsg\"": \""mock失败\""}"",""freeMock.bosc.loanResultQuery"":""{\""errMsg\"":\""成功\"", \""loanNo\"":\""LD2315603311\"", \""retCode\"":\""0\"", \""serialNo\"":\""1704161878427599091\"", \""state\"":\""3\"", \""txnSt1\"":\""E\""}"",""bocom.cash.apply.url"":""/api/lianyir/gdrcvBalanceInfo/v1"",""boc.termid"":""E120133137033"",""boc.custid"":""500000613"",""boc.cusopr"":""500001025"",""spdb.orgId"":""XYZC"",""spdb.subOrgId"":""XYED"",""spdbUrl"":""https://etest4.spdb.com.cn/ia/gateway.do"",""spdb.privateKey"":""MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAKE3uyHGNdSz37uCzMOFjw//hozB/qcZKsPengxvhxMac1fYO89T62RlQGGCoaHkMpb3zdv7yoZ+RbbCCPuX2/LUqUMbiX7rdVD8LuhEOASN7Jzq2keLHtfYPcBIwHRZDrb0d2rtVCUcSN0IQjbgh88s31UnoGTrx0ixeRwQsHLHAgMBAAECgYBlDB5hg++3mupviAM5xZuuxlUaInmvWGnijMT5PGooQhrrg1+xioLu0TuyIoOWigZfc4B3EnGVLM4bR7EDqOI1acYWi111wGUBZtf+LiejwD7U6g0HBe6sQt0FW9SBzKdIAwT1T6FXGwmJtfPB/pqhVhKaZzyyOgUm5DjJq0X/eQJBANQ8jAtMpcqEBWL+nQLWO5UfZ++ojK5idBQiHywAAvB8HlK4gkS+/NsWQMn4G16Lk8zemCi1Rl+4nqxRmDqeFqMCQQDCdgYlrsJxw2JMCBVrtlG0/3TH7bYVGHaHIV4pJf4kmpG8tNd9y2doz9AXl0GT967ME2guyybIFvWyBNIuSMmNAkBxe+qaRCLGde93bpPAJ5N2enOWB3cp68UL2u72FQ99TbDdJIGrhsAn2e9Mz5i65kFio4eTBNMbbdmSZJLUjSGnAkAghTxh8OfzvokhzfhHGyZu7onJJafdv0mTL7FfkEsANBlLRbMEBpA0pwxV5aXB6RoCZvx1VuQVckGEk+nSc7nBAkAB/2SouEqPuCRpUyS4SfIJuUZLqcZ0G06qbaDcKo+lEYtLLfgFnIysDzSrvF6nJ7uvv4MRZOkI7dAtqSfqNpya"",""spdb.publicKey"":""MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCoe28W3uXYcLmczZHg166R8e6OZPriFq22NfvHOjqoKtgH2o5yub9dDn0FvOcTVJ/+E86EXAjgmiti2TuECaEJoLONceOY2TbyP3/BBnCb7dqArN0tg2vfPr+lVXw16En4Hh5TUXA0mJWRdhN9SkC7XUxr2vSHhAsdgqTyJG1XlwIDAQAB"",""hfbank.system.date"":""2025-04-15"",""thfj.http.url"":""https://openapi-test.trinapower.com/dms-bank-api/test"",""thfj.reconciliation.switch"":""false"",""spring.datasource.url"":""jdbc:mysql:loadbalance://172.16.84.184:8066,xyl-local-mycat.lls.com:8066/pubDB-qa?loadBalanceAutoCommitStatementThreshold=5&allowMultiQueries=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false"",""ccbscf.partnerId"":""HBJTLYRPT"",""ccbscf.partnerName"":""湖北交投联易融平台"",""ccbscf.appId"":""FffRByPvIUlkfAM3lDoJjNgh"",""ccbscf.appSecret"":""ueOMFGygWq5B2YwNNKjnRWdJlZ4MTtyn"",""ccbscf.baseReqUrl"":""https://test2.ccbscf.cn"",""crbank.account.date"":""20240416""}}"
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ 表的vars是一列json格式的数据，他会有多层结构，请逐层分析，提取出所有key为"spring.datasource.username"的值，生成一个name,env_name,key的新表
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-07-04 17:48:23 [INFO] Executing Step 3: CodeGenerator
+2024-07-04 17:48:44 [INFO] HTTP Request: POST http://172.16.88.207:9997/v1/chat/completions "HTTP/1.1 200 OK"
+2024-07-04 17:48:44 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:26x3
+name,env_name,vars
+beehive-public-service,dev,"{""Deployment:beehive-cloud-service"":{""parameter"":""-Xms2048M -Xmx2048M -XX:+PrintGCDateStamps -XX:+PrintGCDetails -Xloggc:./gclogs -Ddubbo.reference.check=false -Djava.library.path=/opt/beehivedata/data/javaLibraryPath"",""bob.serviceAccNo"":""中交商业保理有限公司"",""xib.request_url"":""https://xib02.test.xib.com.cn:58080/ifspeesi/common/do/api/scf-1040/"",""tianma.baseUrl"":""https://api-test.tianma.cn:8500/gateway-web"",""bocom.rb.switch"":""false"",""lzbank.down-file.url"":""https://etest.lzbank.com:20059/tmpFileDefault?filename="",""spdb.orgId"":""XYZC"",""spdb.subOrgId"":""XYED"",""spdbUrl"":""https://etest4.spdb.com.cn/ia/gateway.do"",""spdb.privateKey"":""MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAKE3uyHGNdSz37uCzMOFjw//hozB/qcZKsPengxvhxMac1fYO89T62RlQGGCoaHkMpb3zdv7yoZ+RbbCCPuX2/LUqUMbiX7rdVD8LuhEOASN7Jzq2keLHtfYPcBIwHRZDrb0d2rtVCUcSN0IQjbgh88s31UnoGTrx0ixeRwQsHLHAgMBAAECgYBlDB5hg++3mupviAM5xZuuxlUaInmvWGnijMT5PGooQhrrg1+xioLu0TuyIoOWigZfc4B3EnGVLM4bR7EDqOI1acYWi111wGUBZtf+LiejwD7U6g0HBe6sQt0FW9SBzKdIAwT1T6FXGwmJtfPB/pqhVhKaZzyyOgUm5DjJq0X/eQJBANQ8jAtMpcqEBWL+nQLWO5UfZ++ojK5idBQiHywAAvB8HlK4gkS+/NsWQMn4G16Lk8zemCi1Rl+4nqxRmDqeFqMCQQDCdgYlrsJxw2JMCBVrtlG0/3TH7bYVGHaHIV4pJf4kmpG8tNd9y2doz9AXl0GT967ME2guyybIFvWyBNIuSMmNAkBxe+qaRCLGde93bpPAJ5N2enOWB3cp68UL2u72FQ99TbDdJIGrhsAn2e9Mz5i65kFio4eTBNMbbdmSZJLUjSGnAkAghTxh8OfzvokhzfhHGyZu7onJJafdv0mTL7FfkEsANBlLRbMEBpA0pwxV5aXB6RoCZvx1VuQVckGEk+nSc7nBAkAB/2SouEqPuCRpUyS4SfIJuUZLqcZ0G06qbaDcKo+lEYtLLfgFnIysDzSrvF6nJ7uvv4MRZOkI7dAtqSfqNpya"",""spdb.publicKey"":""MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCoe28W3uXYcLmczZHg166R8e6OZPriFq22NfvHOjqoKtgH2o5yub9dDn0FvOcTVJ/+E86EXAjgmiti2TuECaEJoLONceOY2TbyP3/BBnCb7dqArN0tg2vfPr+lVXw16En4Hh5TUXA0mJWRdhN9SkC7XUxr2vSHhAsdgqTyJG1XlwIDAQAB"",""bocom.direct.proxy.server.ip"":""172.16.84.137"",""lzbank.upload-file.url"":""https://etest.lzbank.com:20039/tmpFileDefault"",""bob.serviceAcc"":""20000060390200044509182"",""yinhekeji.baseUrl"":""https://yinghe-agw.hrlyit.com/gateway-web"",""bocom.cash.apply.url"":""/api/lianyir/gdrcvBalanceInfo/v1"",""boc.termid"":""E120133137033"",""boc.custid"":""500000613"",""boc.cusopr"":""500001025"",""szbank.reqUrl"":""https://becptt.szbank.net/becpChannelUAT/openServlet"",""hfbank.system.date"":""2026-06-20"",""CDRCB.SFTP_HOST_NAME"":""qa.sftp.lls.com"",""hzbank.use.newCfgs"":""true"",""thfj.http.url"":""https://openapi-test.trinapower.com/dms-bank-api/test"",""eacf.url"":""http://llt-test-agw.hbsltzb.com:8888/transaction-web/"",""cebbank.request.url"":""http://ceb-test.lls.com:20142"",""spring.datasource.url"":""jdbc:mysql://xyl-local-mycat.lls.com:8066/pubDB-uat?allowMultiQueries=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&connectTimeout=5000&socketTimeout=40000""}}"
+beehive-cloud-service,live2,"{""Deployment:beehive-public-service"":{""lls.multi.tenant.shard.service.enabled"":""false"",""spring.datasource.druid.removeAbandoned"":""true"",""spring.datasource.druid.removeAbandonedTimeoutMillis"":""3000000"",""spring.datasource.druid.logAbandoned"":""true"",""spring.datasource.druid.initialSize"":""10"",""spring.datasource.druid.maxActive"":""100"",""spring.datasource.druid.removeAbandonedTimeout"":""3000"",""spring.datasource.url"":""jdbc:mysql://mysql01.qa.lls.com:5340/beehive_public?allowMultiQueries=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false"",""spring.datasource.username"":""lls"",""spring.datasource.password"":""Qll8QZTIcs36gTNCpd5CK1YL5onNsWzmZncXluBAax4adQifI/z8/zjEFgpNnCxDyetkkUi33mwUQt0vK57M8w=="",""spring.datasource.druid.publicKey"":""MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKI4s2bGdUoavpb7LoYGBADbSKDgDEzFUXaPujyrswRZGtMgvHN2L190cTwNgdcU3yaZPV/m+EwdbsyEgv9Z3d0CAwEAAQ==""}}"
+beehive-param-service,qa,"{""Deployment:beehive-cloud-service"":{""parameter"":""-Xms2048M -Xmx2048M -XX:+PrintGCDateStamps -XX:+PrintGCDetails -Xloggc:./gclogs -Ddubbo.reference.check=false -Djava.library.path=/opt/beehivedata/data/javaLibraryPath"",""freeMock.switch"":""false"",""bob.serviceAccNo"":""蔷薇聚信（北京）科技有限公司"",""freeMock.zyBalanceQueryResult"":""{ \""STATUE\"": \""01\"", \""RATE\"": \""100\"", \""FEE_RATE\"": \""1\"", \""ACCT_NO\"": \""419999010320011302\"", \""ACCT_NAME\"": \""中原银行保证金-ZJ勿动测试\"", \""ACCT_BANK_NAME\"": \""中原银行股份有限公司\"", \""ACC_VAL_GRC_PRD\"": \""5\"" }"",""freeMock.zyAssetInfoPushResult"":""{}"",""freeMock.zyTradeBackgroundInfoPushResult"":""{}"",""freeMock.ZyCashApplyResult"":""{ \""SCF_LOAN_APPLY_NO\"": \""FKSQ11016021350216000000001\"" }"",""freeMock.zyCashApplyResultQueryResult"":""{ \""Row\"": [ { \""PROCESS_STATUS\"":\""04\"" } ] }"",""cbs.front.url"":""http://172.16.201.173:1212"",""cbs.front.key"":""123"",""lzbank.down-file.url"":""https://etest.lzbank.com:20059/tmpFileDefault?filename="",""bocom.direct.proxy.server.ip"":""172.16.84.137"",""cebbank.sftp.hostname"":""qa.sftp.lls.com"",""cebbank.request.url"":""http://ceb-test.lls.com:20141"",""bocom.rb.switch"":""false"",""freeMock.cebFinancierInfoResult"":""{\""status\"":\""0\"",\""companyLicense\"":\""91310106763314112F\"",\""Reg_Address\"":\""南宁市兴宁区昆仑大道5号大嘉汇东盟国际商贸港汽车用品配件广场第33号楼第五层第517-2、518号南宁市兴宁区昆仑大道号大嘉汇东盟国际商贸港汽车用品配件广场第33号楼第五层第517-2、518号南宁市兴宁区昆仑大道5号大嘉汇东盟国际商贸港汽车用品配件广场第33号楼第五层第517-2、518号南宁市兴宁区昆仑大道5号大嘉汇东盟国际商贸港汽车用品配件广场第33号楼第五层第517-2、518号南宁市兴宁区昆仑大道5号大嘉汇东盟国际商贸港汽车用品配\"",\""companyOrgNo\"":\""91310113666099289P\"",\""Tax_Certificate_No\"":\""91310106763314112F\"",\""Local_Tax_No\"":\""91310106763314112F\"",\""companyRegAddress\"":\""南拉xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxXXXXXXXXXXXXXXXXXXXXXXXXXXXX答了\"",\""CUST_POSTCODE\"":\""264000\"",\""Industry_type\"":\""621\"",\""employeesCount\"":\""(1000~5000]\"",\""Listing_Corp_Flag\"":\""1\"",\""principalName\"":\""方佶敏\"",\""FWD191\"":[{\""BEF_ALL_BZ\"":\""2\"",\""BO_Name\"":\""周博潇\""},{\""BEF_ALL_BZ\"":\""2\"",\""BO_Name\"":\""国务院国有资产监督管理委员会\""},{\""BEF_ALL_BZ\"":\""2\"",\""BO_Name\"":\""王同明\""},{\""BEF_ALL_BZ\"":\""2\"",\""BO_Name\"":\""吴连成\""},{\""BEF_ALL_BZ\"":\""2\"",\""BO_Name\"":\""郑家江\""},{\""BEF_ALL_BZ\"":\""1\"",\""BO_Name\"":\""刘丰\""},{\""BEF_ALL_BZ\"":\""2\"",\""BO_Name\"":\""汪先纯\""},{\""BEF_ALL_BZ\"":\""2\"",\""BO_Name\"":\""孔令兵\""}],\""FWD192\"":[{\""Shardholder1_Aml_Type\"":\""0\"",\""Shardholder1_Role_Org_Flag\"":\""2\"",\""ISLEAGLE\"":\""2\"",\""Shardholder1_Name\"":\""阿达的\""}]}"",""freeMock.CebPullImageNoticeResult"":""{\""serialNo\"": \""01392022030714303164426233931097\"", \""resultCode\"": \""0\"", \""RESERVE1\"": \""0\"" }"",""freeMock.CebImageNoQueryResult"":""{\""serialNo\"": \""01392022030714303164426233931097\"", \""resultCode\"": \""0\"",\""imageId\"": \""LYRT20220307143151AE3E0ED2D31E1A\"", \""reason\"": \"" \"",\""FWD181\"": [{\""imageType\"":\""QYSQ\"" }, { \""imageType\"":\""XQSB\"" }, { \""imageType\"":\""BOZJ\"" }, { \""imageType\"":\""SHZJ\"" }, { \""imageType\"":\""DKHT\"" }, { \""imageType\"":\""SFZJ\"" }, { \""imageType\"":\""AJZJ\"" }, { \""imageType\"":\""FPYY\"" }, { \""imageType\"":\""GSZZ\"" } ], \""RESERVE3\"": \"" \"", \""RESERVE4\"": \"" \"", \""RESERVE5\"": \"" \"", \""RESERVE6\"": \"" \"" }"",""freeMock.CebCashAppResult"":""{\""serialNo\"":\""01392022030714350097340806530866\"",\""status\"":\""1\"",\""reason\"":\"" \"",\""RESERVE3\"":\"" \"",\""RESERVE4\"":\"" \"",\""RESERVE5\"": \"" \"", \""RESERVE6\"": \"" \"" }"",""freeMock.CebReplyQueryResult"":""{\""serialNo\"":\""SX000000000000000000000000009736\"",\""status\"": \""0\"",\""failureReason\"": \"" \"",\""PFUHAO\"": \""36542022030021\"",\""CustNO\"":\""2006270368\"", \""appply_quota_no\"":\""8716\"", \""totalAmtIn\"":\""2878859.64\"",\""credTerm\"": \""180\"", \""cycFlag\"": \"" \"", \""approveRateBase\"": \""4.25\"", \""penaltyRate\"": \""0\"",\""validityDate\"":\""20220903\"",\""RESERVE1\"":\"" \"",\""RESERVE2\"":\"" \"", \""RESERVE3\"":\"" \"", \""RESERVE4\"":\"" \"", \""RESERVE5\"":\""\"", \""RESERVE6\"":\"" \"" }"",""freeMock.CebLoanAppResult"":""{ \""serialNo\"": \""01392022030715000043495646585762\"", \""PFUHAO\"": \""36542022030021\"", \""status\"": \""1\"", \""HETHAO\"": \""36542251000001\"", \""JIEJUH\"": \""36542251000001001\"", \""loanStartDate\"": \""20220307\"", \""loanEndDate\"": \""20220831\"", \""insterestRate\"": \""4.25\"" }"",""freeMock.bosc.cashPreAppleQueryWholeResult"":""{ \""serialNo\"": \""01392021120314512134859758729588\"", \""retCode\"": \""-1\"", \""errMsg\"": \""mock失败\""}"",""freeMock.bosc.loanResultQuery"":""{\""errMsg\"":\""成功\"", \""loanNo\"":\""LD2315603311\"", \""retCode\"":\""0\"", \""serialNo\"":\""1704161878427599091\"", \""state\"":\""3\"", \""txnSt1\"":\""E\""}"",""bocom.cash.apply.url"":""/api/lianyir/gdrcvBalanceInfo/v1"",""boc.termid"":""E120133137033"",""boc.custid"":""500000613"",""boc.cusopr"":""500001025"",""spdb.orgId"":""XYZC"",""spdb.subOrgId"":""XYED"",""spdbUrl"":""https://etest4.spdb.com.cn/ia/gateway.do"",""spdb.privateKey"":""MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAKE3uyHGNdSz37uCzMOFjw//hozB/qcZKsPengxvhxMac1fYO89T62RlQGGCoaHkMpb3zdv7yoZ+RbbCCPuX2/LUqUMbiX7rdVD8LuhEOASN7Jzq2keLHtfYPcBIwHRZDrb0d2rtVCUcSN0IQjbgh88s31UnoGTrx0ixeRwQsHLHAgMBAAECgYBlDB5hg++3mupviAM5xZuuxlUaInmvWGnijMT5PGooQhrrg1+xioLu0TuyIoOWigZfc4B3EnGVLM4bR7EDqOI1acYWi111wGUBZtf+LiejwD7U6g0HBe6sQt0FW9SBzKdIAwT1T6FXGwmJtfPB/pqhVhKaZzyyOgUm5DjJq0X/eQJBANQ8jAtMpcqEBWL+nQLWO5UfZ++ojK5idBQiHywAAvB8HlK4gkS+/NsWQMn4G16Lk8zemCi1Rl+4nqxRmDqeFqMCQQDCdgYlrsJxw2JMCBVrtlG0/3TH7bYVGHaHIV4pJf4kmpG8tNd9y2doz9AXl0GT967ME2guyybIFvWyBNIuSMmNAkBxe+qaRCLGde93bpPAJ5N2enOWB3cp68UL2u72FQ99TbDdJIGrhsAn2e9Mz5i65kFio4eTBNMbbdmSZJLUjSGnAkAghTxh8OfzvokhzfhHGyZu7onJJafdv0mTL7FfkEsANBlLRbMEBpA0pwxV5aXB6RoCZvx1VuQVckGEk+nSc7nBAkAB/2SouEqPuCRpUyS4SfIJuUZLqcZ0G06qbaDcKo+lEYtLLfgFnIysDzSrvF6nJ7uvv4MRZOkI7dAtqSfqNpya"",""spdb.publicKey"":""MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCoe28W3uXYcLmczZHg166R8e6OZPriFq22NfvHOjqoKtgH2o5yub9dDn0FvOcTVJ/+E86EXAjgmiti2TuECaEJoLONceOY2TbyP3/BBnCb7dqArN0tg2vfPr+lVXw16En4Hh5TUXA0mJWRdhN9SkC7XUxr2vSHhAsdgqTyJG1XlwIDAQAB"",""hfbank.system.date"":""2025-04-15"",""thfj.http.url"":""https://openapi-test.trinapower.com/dms-bank-api/test"",""thfj.reconciliation.switch"":""false"",""spring.datasource.url"":""jdbc:mysql:loadbalance://172.16.84.184:8066,xyl-local-mycat.lls.com:8066/pubDB-qa?loadBalanceAutoCommitStatementThreshold=5&allowMultiQueries=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false"",""ccbscf.partnerId"":""HBJTLYRPT"",""ccbscf.partnerName"":""湖北交投联易融平台"",""ccbscf.appId"":""FffRByPvIUlkfAM3lDoJjNgh"",""ccbscf.appSecret"":""ueOMFGygWq5B2YwNNKjnRWdJlZ4MTtyn"",""ccbscf.baseReqUrl"":""https://test2.ccbscf.cn"",""crbank.account.date"":""20240416""}}"
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ 表的vars是一列json格式的数据，他会有多层结构，请逐层分析，提取出所有key为"spring.datasource.username"的值，生成一个name,env_name,key的新表
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-07-04 17:48:44 [INFO] Code generated:
+            ```
+            # Import necessary libraries
+import pandas as pd
+import json
+
+# Create a function to extract the value by key from nested dictionaries
+def extract_value(d, keys):
+    for k in keys.split('.'):
+        if k in d:
+            d = d[k]
+        else:
+            return None
+    return d
+
+# Create a new DataFrame with name, env_name, and key 'spring.datasource.username'
+new_df = pd.DataFrame(columns=['name', 'env_name', 'key', 'value'])
+
+for df in dfs:
+    # Iterate over each row
+    for _, row in df.iterrows():
+        name = row['name']
+        env_name = row['env_name']
+        json_str = row['vars']
+        data = json.loads(json_str)
+
+        # Extract the value for 'spring.datasource.username'
+        value = extract_value(data, 'spring.datasource.username')
+
+        # If the value is found, append to the new DataFrame
+        if value is not None:
+            new_df = new_df.append({'name': name, 'env_name': env_name, 'key': 'spring.datasource.username', 'value': value}, ignore_index=True)
+
+# Remove possible duplicate entries
+new_df = new_df.drop_duplicates()
+
+# Update the "result" variable
+result = {
+    "type": "dataframe",
+    "value": new_df
+}
+
+result
+            ```
+            
+2024-07-04 17:48:44 [INFO] Executing Step 4: CachePopulation
+2024-07-04 17:48:44 [INFO] Executing Step 5: CodeCleaning
+2024-07-04 17:48:44 [INFO] 
+Code running:
+```
+def extract_value(d, keys):
+    for k in keys.split('.'):
+        if k in d:
+            d = d[k]
+        else:
+            return None
+    return d
+
+
+new_df = pd.DataFrame(columns=['name', 'env_name', 'key', 'value'])
+for df in dfs:
+    for _, row in df.iterrows():
+        name = row['name']
+        env_name = row['env_name']
+        json_str = row['vars']
+        data = json.loads(json_str)
+        value = extract_value(data, 'spring.datasource.username')
+        if value is not None:
+            new_df = new_df.append({'name': name, 'env_name': env_name, 'key': 'spring.datasource.username', 'value': value}, ignore_index=True)
+new_df = new_df.drop_duplicates()
+result = {'type': 'dataframe', 'value': new_df}
+result
+        ```
+2024-07-04 17:48:44 [INFO] Executing Step 6: CodeExecution
+2024-07-04 17:48:44 [INFO] Executing Step 7: ResultValidation
+2024-07-04 17:48:44 [INFO] Answer: {'type': 'dataframe', 'value': Empty DataFrame
+Columns: [name, env_name, key, value]
+Index: []}
+2024-07-04 17:48:44 [INFO] Executing Step 8: ResultParsing
+2024-07-04 17:49:31 [INFO] Question: 表的vars是一列json格式的数据，他会有多层结构，请逐层分析，提取出所有key为"spring.datasource.username"的值，生成一个name,env_name,key的新表
+2024-07-04 17:49:33 [INFO] Running PandasAI with local LLM...
+2024-07-04 17:49:33 [INFO] Prompt ID: ae0d1d51-cdeb-483d-9365-422ff0d57f04
+2024-07-04 17:49:33 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-07-04 17:49:33 [INFO] Executing Step 0: ValidatePipelineInput
+2024-07-04 17:49:33 [INFO] Executing Step 1: CacheLookup
+2024-07-04 17:49:33 [INFO] Using cached response
+2024-07-04 17:49:33 [INFO] Executing Step 2: PromptGeneration
+2024-07-04 17:49:33 [INFO] Executing Step 2: Skipping...
+2024-07-04 17:49:33 [INFO] Executing Step 3: CodeGenerator
+2024-07-04 17:49:33 [INFO] Executing Step 3: Skipping...
+2024-07-04 17:49:33 [INFO] Executing Step 4: CachePopulation
+2024-07-04 17:49:33 [INFO] Executing Step 4: Skipping...
+2024-07-04 17:49:33 [INFO] Executing Step 5: CodeCleaning
+2024-07-04 17:49:33 [INFO] 
+Code running:
+```
+def extract_value(d, keys):
+    for k in keys.split('.'):
+        if k in d:
+            d = d[k]
+        else:
+            return None
+    return d
+
+
+new_df = pd.DataFrame(columns=['name', 'env_name', 'key', 'value'])
+for df in dfs:
+    for _, row in df.iterrows():
+        name = row['name']
+        env_name = row['env_name']
+        json_str = row['vars']
+        data = json.loads(json_str)
+        value = extract_value(data, 'spring.datasource.username')
+        if value is not None:
+            new_df = new_df.append({'name': name, 'env_name': env_name, 'key': 'spring.datasource.username', 'value': value}, ignore_index=True)
+new_df = new_df.drop_duplicates()
+result = {'type': 'dataframe', 'value': new_df}
+result
+        ```
+2024-07-04 17:49:33 [INFO] Executing Step 6: CodeExecution
+2024-07-04 17:49:33 [INFO] Executing Step 7: ResultValidation
+2024-07-04 17:49:33 [INFO] Answer: {'type': 'dataframe', 'value': Empty DataFrame
+Columns: [name, env_name, key, value]
+Index: []}
+2024-07-04 17:49:33 [INFO] Executing Step 8: ResultParsing
+2024-07-04 17:50:43 [INFO] Question: 表的vars是一列json格式的数据，他会有多层结构，请逐层分析，提取出所有key为"spring.datasource.username"的值
+2024-07-04 17:50:45 [INFO] Running PandasAI with local LLM...
+2024-07-04 17:50:45 [INFO] Prompt ID: 8858a8cc-d10b-4e08-afa8-de29b04b4b10
+2024-07-04 17:50:45 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-07-04 17:50:45 [INFO] Executing Step 0: ValidatePipelineInput
+2024-07-04 17:50:45 [INFO] Executing Step 1: CacheLookup
+2024-07-04 17:50:45 [INFO] Executing Step 2: PromptGeneration
+2024-07-04 17:50:45 [INFO] Using prompt: <dataframe>
+dfs[0]:26x3
+name,env_name,vars
+beehive-job-task,uat,"{""Deployment:beehive-public-service"":{""lls.multi.tenant.shard.service.enabled"":""false"",""spring.datasource.url"":""jdbc:mysql://uat-mysql.lls.com:3450/beehive_public?allowMultiQueries=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false"",""spring.datasource.username"":""lls"",""spring.datasource.password"":""Qll8QZTIcs36gTNCpd5CK1YL5onNsWzmZncXluBAax4adQifI/z8/zjEFgpNnCxDyetkkUi33mwUQt0vK57M8w=="",""spring.datasource.druid.publicKey"":""MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKI4s2bGdUoavpb7LoYGBADbSKDgDEzFUXaPujyrswRZGtMgvHN2L190cTwNgdcU3yaZPV/m+EwdbsyEgv9Z3d0CAwEAAQ==""}}"
+beehive-param-service,live2,"{""Deployment:beehive-public-service"":{""lls.multi.tenant.shard.service.enabled"":""false"",""spring.datasource.druid.removeAbandoned"":""true"",""spring.datasource.druid.removeAbandonedTimeoutMillis"":""3000000"",""spring.datasource.druid.logAbandoned"":""true"",""spring.datasource.druid.initialSize"":""10"",""spring.datasource.druid.maxActive"":""100"",""spring.datasource.druid.removeAbandonedTimeout"":""3000"",""spring.datasource.url"":""jdbc:mysql://mysql01.uat.lls.com:5340/beehive_public?allowMultiQueries=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false"",""spring.datasource.username"":""lls"",""spring.datasource.password"":""Qll8QZTIcs36gTNCpd5CK1YL5onNsWzmZncXluBAax4adQifI/z8/zjEFgpNnCxDyetkkUi33mwUQt0vK57M8w=="",""spring.datasource.druid.publicKey"":""MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKI4s2bGdUoavpb7LoYGBADbSKDgDEzFUXaPujyrswRZGtMgvHN2L190cTwNgdcU3yaZPV/m+EwdbsyEgv9Z3d0CAwEAAQ==""}}"
+beehive-cust-service,dev,"{""Deployment:beehive-media-service"":{""spring.datasource.url"":""jdbc:mysql://dev-mysql.lls.com:3510/wec_local_media?allowMultiQueries=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false""}}"
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ 表的vars是一列json格式的数据，他会有多层结构，请逐层分析，提取出所有key为"spring.datasource.username"的值
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-07-04 17:50:45 [INFO] Executing Step 3: CodeGenerator
+2024-07-04 17:50:54 [INFO] HTTP Request: POST http://172.16.88.207:9997/v1/chat/completions "HTTP/1.1 200 OK"
+2024-07-04 17:50:54 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:26x3
+name,env_name,vars
+beehive-job-task,uat,"{""Deployment:beehive-public-service"":{""lls.multi.tenant.shard.service.enabled"":""false"",""spring.datasource.url"":""jdbc:mysql://uat-mysql.lls.com:3450/beehive_public?allowMultiQueries=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false"",""spring.datasource.username"":""lls"",""spring.datasource.password"":""Qll8QZTIcs36gTNCpd5CK1YL5onNsWzmZncXluBAax4adQifI/z8/zjEFgpNnCxDyetkkUi33mwUQt0vK57M8w=="",""spring.datasource.druid.publicKey"":""MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKI4s2bGdUoavpb7LoYGBADbSKDgDEzFUXaPujyrswRZGtMgvHN2L190cTwNgdcU3yaZPV/m+EwdbsyEgv9Z3d0CAwEAAQ==""}}"
+beehive-param-service,live2,"{""Deployment:beehive-public-service"":{""lls.multi.tenant.shard.service.enabled"":""false"",""spring.datasource.druid.removeAbandoned"":""true"",""spring.datasource.druid.removeAbandonedTimeoutMillis"":""3000000"",""spring.datasource.druid.logAbandoned"":""true"",""spring.datasource.druid.initialSize"":""10"",""spring.datasource.druid.maxActive"":""100"",""spring.datasource.druid.removeAbandonedTimeout"":""3000"",""spring.datasource.url"":""jdbc:mysql://mysql01.uat.lls.com:5340/beehive_public?allowMultiQueries=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false"",""spring.datasource.username"":""lls"",""spring.datasource.password"":""Qll8QZTIcs36gTNCpd5CK1YL5onNsWzmZncXluBAax4adQifI/z8/zjEFgpNnCxDyetkkUi33mwUQt0vK57M8w=="",""spring.datasource.druid.publicKey"":""MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKI4s2bGdUoavpb7LoYGBADbSKDgDEzFUXaPujyrswRZGtMgvHN2L190cTwNgdcU3yaZPV/m+EwdbsyEgv9Z3d0CAwEAAQ==""}}"
+beehive-cust-service,dev,"{""Deployment:beehive-media-service"":{""spring.datasource.url"":""jdbc:mysql://dev-mysql.lls.com:3510/wec_local_media?allowMultiQueries=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false""}}"
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ 表的vars是一列json格式的数据，他会有多层结构，请逐层分析，提取出所有key为"spring.datasource.username"的值
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-07-04 17:50:54 [INFO] Code generated:
+            ```
+            import pandas as pd
+import json
+
+# Define a function to extract the value for the key "spring.datasource.username"
+def extract_username(json_dict):
+    if isinstance(json_dict, dict):
+        if "spring.datasource.username" in json_dict:
+            return json_dict["spring.datasource.username"]
+        else:
+            return None
+    elif isinstance(json_dict, list):
+        return [extract_username(item) for item in json_dict]
+    else:
+        return None
+
+# Iterate through dfs and apply the function to extract usernames
+result_list = []
+for df in dfs:
+    usernames = df["vars"].apply(json.loads).apply(extract_username)
+    result_list.extend(usernames.tolist())
+
+# Create a new dataframe with the extracted usernames
+result_df = pd.DataFrame(result_list, columns=["username"])
+
+# Declare result var
+result = {"type": "dataframe", "value": result_df}
+            ```
+            
+2024-07-04 17:50:54 [INFO] Executing Step 4: CachePopulation
+2024-07-04 17:50:54 [INFO] Executing Step 5: CodeCleaning
+2024-07-04 17:50:54 [INFO] 
+Code running:
+```
+def extract_username(json_dict):
+    if isinstance(json_dict, dict):
+        if 'spring.datasource.username' in json_dict:
+            return json_dict['spring.datasource.username']
+        else:
+            return None
+    elif isinstance(json_dict, list):
+        return [extract_username(item) for item in json_dict]
+    else:
+        return None
+
+
+result_list = []
+for df in dfs:
+    usernames = df['vars'].apply(json.loads).apply(extract_username)
+    result_list.extend(usernames.tolist())
+result_df = pd.DataFrame(result_list, columns=['username'])
+result = {'type': 'dataframe', 'value': result_df}
+        ```
+2024-07-04 17:50:54 [INFO] Executing Step 6: CodeExecution
+2024-07-04 17:50:54 [INFO] Executing Step 7: ResultValidation
+2024-07-04 17:50:54 [INFO] Answer: {'type': 'dataframe', 'value':    username
+0      None
+1      None
+2      None
+3      None
+4      None
+5      None
+6      None
+7      None
+8      None
+9      None
+10     None
+11     None
+12     None
+13     None
+14     None
+15     None
+16     None
+17     None
+18     None
+19     None
+20     None
+21     None
+22     None
+23     None
+24     None
+25     None}
+2024-07-04 17:50:54 [INFO] Executing Step 8: ResultParsing
+2024-07-04 17:52:16 [INFO] Question: 表的vars是一列json格式的数据，他会有多层结构，请逐层分析，提取出所有key为"spring.datasource.username"的值
+2024-07-04 17:52:17 [INFO] Running PandasAI with local LLM...
+2024-07-04 17:52:17 [INFO] Prompt ID: 5e910bb3-1a7f-472e-99a4-d2b3108a5c01
+2024-07-04 17:52:17 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-07-04 17:52:18 [INFO] Executing Step 0: ValidatePipelineInput
+2024-07-04 17:52:18 [INFO] Executing Step 1: CacheLookup
+2024-07-04 17:52:18 [INFO] Using cached response
+2024-07-04 17:52:18 [INFO] Executing Step 2: PromptGeneration
+2024-07-04 17:52:18 [INFO] Executing Step 2: Skipping...
+2024-07-04 17:52:18 [INFO] Executing Step 3: CodeGenerator
+2024-07-04 17:52:18 [INFO] Executing Step 3: Skipping...
+2024-07-04 17:52:18 [INFO] Executing Step 4: CachePopulation
+2024-07-04 17:52:18 [INFO] Executing Step 4: Skipping...
+2024-07-04 17:52:18 [INFO] Executing Step 5: CodeCleaning
+2024-07-04 17:52:18 [INFO] 
+Code running:
+```
+def extract_username(json_dict):
+    if isinstance(json_dict, dict):
+        if 'spring.datasource.username' in json_dict:
+            return json_dict['spring.datasource.username']
+        else:
+            return None
+    elif isinstance(json_dict, list):
+        return [extract_username(item) for item in json_dict]
+    else:
+        return None
+
+
+result_list = []
+for df in dfs:
+    usernames = df['vars'].apply(json.loads).apply(extract_username)
+    result_list.extend(usernames.tolist())
+result_df = pd.DataFrame(result_list, columns=['username'])
+result = {'type': 'dataframe', 'value': result_df}
+        ```
+2024-07-04 17:52:18 [INFO] Executing Step 6: CodeExecution
+2024-07-04 17:52:18 [INFO] Executing Step 7: ResultValidation
+2024-07-04 17:52:18 [INFO] Answer: {'type': 'dataframe', 'value':    username
+0      None
+1      None
+2      None
+3      None
+4      None
+5      None
+6      None
+7      None
+8      None
+9      None
+10     None
+11     None
+12     None
+13     None
+14     None
+15     None
+16     None
+17     None
+18     None
+19     None
+20     None
+21     None
+22     None
+23     None
+24     None
+25     None}
+2024-07-04 17:52:18 [INFO] Executing Step 8: ResultParsing
+2024-07-05 17:01:13 [INFO] Question: Given a table named vars containing JSON data in a multi-level structure, the task is to extract all values corresponding to the key "spring.datasource.username" and generate a new table with columns named name, env_name, and key
+2024-07-05 17:01:15 [INFO] Running PandasAI with local LLM...
+2024-07-05 17:01:15 [INFO] Prompt ID: 6a1f4355-a9d0-4482-b137-58b3b691f0ac
+2024-07-05 17:01:15 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-07-05 17:01:15 [INFO] Executing Step 0: ValidatePipelineInput
+2024-07-05 17:01:15 [INFO] Executing Step 1: CacheLookup
+2024-07-05 17:01:15 [INFO] Executing Step 2: PromptGeneration
+2024-07-05 17:01:15 [INFO] Using prompt: <dataframe>
+dfs[0]:26x3
+name,env_name,vars
+beehive-public-service,live,"{""Deployment:beehive-param-service"":{""lls.multi.tenant.shard.service.enabled"":""false"",""spring.datasource.url"":""jdbc:mysql://mysql01.uat.lls.com:5340/beehive_param?allowMultiQueries=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false"",""spring.datasource.username"":""lls"",""spring.datasource.password"":""Qll8QZTIcs36gTNCpd5CK1YL5onNsWzmZncXluBAax4adQifI/z8/zjEFgpNnCxDyetkkUi33mwUQt0vK57M8w=="",""spring.datasource.druid.publicKey"":""MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKI4s2bGdUoavpb7LoYGBADbSKDgDEzFUXaPujyrswRZGtMgvHN2L190cTwNgdcU3yaZPV/m+EwdbsyEgv9Z3d0CAwEAAQ==""}}"
+beehive-media-service,uat,"{""Deployment:beehive-public-service"":{""lls.multi.tenant.shard.service.enabled"":""false"",""spring.datasource.url"":""jdbc:mysql://uat-mysql.lls.com:3450/beehive_public?allowMultiQueries=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false"",""spring.datasource.username"":""lls"",""spring.datasource.password"":""Qll8QZTIcs36gTNCpd5CK1YL5onNsWzmZncXluBAax4adQifI/z8/zjEFgpNnCxDyetkkUi33mwUQt0vK57M8w=="",""spring.datasource.druid.publicKey"":""MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKI4s2bGdUoavpb7LoYGBADbSKDgDEzFUXaPujyrswRZGtMgvHN2L190cTwNgdcU3yaZPV/m+EwdbsyEgv9Z3d0CAwEAAQ==""}}"
+beehive-param-service,uat2,"{""Deployment:beehive-job-task"":{""spring.datasource.url"":""jdbc:mysql://mysql01.dev.lls.com:5340/beehive_xxljob?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false""}}"
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Given a table named vars containing JSON data in a multi-level structure, the task is to extract all values corresponding to the key "spring.datasource.username" and generate a new table with columns named name, env_name, and key
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-07-05 17:01:15 [INFO] Executing Step 3: CodeGenerator
+2024-07-05 17:01:28 [INFO] HTTP Request: POST http://172.16.88.207:9997/v1/chat/completions "HTTP/1.1 200 OK"
+2024-07-05 17:01:28 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:26x3
+name,env_name,vars
+beehive-public-service,live,"{""Deployment:beehive-param-service"":{""lls.multi.tenant.shard.service.enabled"":""false"",""spring.datasource.url"":""jdbc:mysql://mysql01.uat.lls.com:5340/beehive_param?allowMultiQueries=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false"",""spring.datasource.username"":""lls"",""spring.datasource.password"":""Qll8QZTIcs36gTNCpd5CK1YL5onNsWzmZncXluBAax4adQifI/z8/zjEFgpNnCxDyetkkUi33mwUQt0vK57M8w=="",""spring.datasource.druid.publicKey"":""MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKI4s2bGdUoavpb7LoYGBADbSKDgDEzFUXaPujyrswRZGtMgvHN2L190cTwNgdcU3yaZPV/m+EwdbsyEgv9Z3d0CAwEAAQ==""}}"
+beehive-media-service,uat,"{""Deployment:beehive-public-service"":{""lls.multi.tenant.shard.service.enabled"":""false"",""spring.datasource.url"":""jdbc:mysql://uat-mysql.lls.com:3450/beehive_public?allowMultiQueries=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false"",""spring.datasource.username"":""lls"",""spring.datasource.password"":""Qll8QZTIcs36gTNCpd5CK1YL5onNsWzmZncXluBAax4adQifI/z8/zjEFgpNnCxDyetkkUi33mwUQt0vK57M8w=="",""spring.datasource.druid.publicKey"":""MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKI4s2bGdUoavpb7LoYGBADbSKDgDEzFUXaPujyrswRZGtMgvHN2L190cTwNgdcU3yaZPV/m+EwdbsyEgv9Z3d0CAwEAAQ==""}}"
+beehive-param-service,uat2,"{""Deployment:beehive-job-task"":{""spring.datasource.url"":""jdbc:mysql://mysql01.dev.lls.com:5340/beehive_xxljob?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false""}}"
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Given a table named vars containing JSON data in a multi-level structure, the task is to extract all values corresponding to the key "spring.datasource.username" and generate a new table with columns named name, env_name, and key
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-07-05 17:01:28 [INFO] Code generated:
+            ```
+            # Import the required dependencies
+import pandas as pd
+import json
+from pandas.io.json import json_normalize
+
+def extract_values(df):
+    extracted_values = []
+    for index, row in df.iterrows():
+        vars_json = json.loads(row['vars'])
+        keys_to_flags = {}
+        flatten_json(vars_json, keys_to_flags, "")
+        for key, value in keys_to_flags.items():
+            if "spring.datasource.username" in key:
+                extracted_values.append({
+                    'name': row['name'],
+                    'env_name': row['env_name'],
+                    'key': key
+                })
+    
+    return pd.DataFrame(extracted_values)
+
+def flatten_json(y, keys_to_flags, key):
+    for k, v in y.items():
+        new_key = key + '.' + k if key else k
+        if isinstance(v, dict):
+            flatten_json(v, keys_to_flags, new_key)
+        elif isinstance(v, list):
+            for i in range(len(v)):
+                flatten_json(v[i], keys_to_flags, new_key + '[' + str(i) + ']')
+        else:
+            keys_to_flags[new_key] = v
+
+dfs_new = [extract_values(df) for df in dfs]
+
+# Concatenate the resulting DataFrames
+result_df = pd.concat(dfs_new, ignore_index=True)
+
+# Declare the result variable as a dataframe
+result = {"type": "dataframe", "value": result_df}
+
+result
+            ```
+            
+2024-07-05 17:01:28 [INFO] Executing Step 4: CachePopulation
+2024-07-05 17:01:28 [INFO] Executing Step 5: CodeCleaning
+2024-07-05 17:01:28 [INFO] 
+Code running:
+```
+def extract_values(df):
+    extracted_values = []
+    for index, row in df.iterrows():
+        vars_json = json.loads(row['vars'])
+        keys_to_flags = {}
+        flatten_json(vars_json, keys_to_flags, '')
+        for key, value in keys_to_flags.items():
+            if 'spring.datasource.username' in key:
+                extracted_values.append({'name': row['name'], 'env_name': row['env_name'], 'key': key})
+    return pd.DataFrame(extracted_values)
+
+
+def flatten_json(y, keys_to_flags, key):
+    for k, v in y.items():
+        new_key = key + '.' + k if key else k
+        if isinstance(v, dict):
+            flatten_json(v, keys_to_flags, new_key)
+        elif isinstance(v, list):
+            for i in range(len(v)):
+                flatten_json(v[i], keys_to_flags, new_key + '[' + str(i) + ']')
+        else:
+            keys_to_flags[new_key] = v
+
+
+dfs_new = [extract_values(df) for df in dfs]
+result_df = pd.concat(dfs_new, ignore_index=True)
+result = {'type': 'dataframe', 'value': result_df}
+result
+        ```
+2024-07-05 17:01:28 [INFO] Executing Step 6: CodeExecution
+2024-07-05 17:01:28 [INFO] Executing Step 7: ResultValidation
+2024-07-05 17:01:28 [INFO] Answer: {'type': 'dataframe', 'value':                       name  ...                                                key
+0         beehive-job-task  ...  Deployment:beehive-job-task.spring.datasource....
+1   beehive-public-service  ...  Deployment:beehive-public-service.spring.datas...
+2   beehive-public-service  ...  Deployment:beehive-public-service.spring.datas...
+3   beehive-public-service  ...  Deployment:beehive-public-service.spring.datas...
+4    beehive-param-service  ...  Deployment:beehive-param-service.spring.dataso...
+5    beehive-param-service  ...  Deployment:beehive-param-service.spring.dataso...
+6    beehive-param-service  ...  Deployment:beehive-param-service.spring.dataso...
+7    beehive-param-service  ...  Deployment:beehive-param-service.spring.dataso...
+8    beehive-param-service  ...  Deployment:beehive-param-service.spring.dataso...
+9    beehive-param-service  ...  Deployment:beehive-param-service.spring.dataso...
+10        beehive-job-task  ...  Deployment:beehive-job-task.spring.datasource....
+11  beehive-public-service  ...  Deployment:beehive-public-service.spring.datas...
+12  beehive-public-service  ...  Deployment:beehive-public-service.spring.datas...
+13  beehive-public-service  ...  Deployment:beehive-public-service.spring.datas...
+
+[14 rows x 3 columns]}
+2024-07-05 17:01:28 [INFO] Executing Step 8: ResultParsing
+2024-07-05 17:02:42 [INFO] Question: 表的vars是一列json格式的数据，他会有多层结构，请逐层分析，提取出所有key为"spring.datasource.username"的值，生成一个name,env_name,key的新表
+2024-07-05 17:02:45 [INFO] Running PandasAI with local LLM...
+2024-07-05 17:02:45 [INFO] Prompt ID: 0e8eb6ae-02aa-4f6e-9b2a-19a7227a1263
+2024-07-05 17:02:45 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-07-05 17:02:45 [INFO] Executing Step 0: ValidatePipelineInput
+2024-07-05 17:02:45 [INFO] Executing Step 1: CacheLookup
+2024-07-05 17:02:45 [INFO] Using cached response
+2024-07-05 17:02:45 [INFO] Executing Step 2: PromptGeneration
+2024-07-05 17:02:45 [INFO] Executing Step 2: Skipping...
+2024-07-05 17:02:45 [INFO] Executing Step 3: CodeGenerator
+2024-07-05 17:02:45 [INFO] Executing Step 3: Skipping...
+2024-07-05 17:02:45 [INFO] Executing Step 4: CachePopulation
+2024-07-05 17:02:45 [INFO] Executing Step 4: Skipping...
+2024-07-05 17:02:45 [INFO] Executing Step 5: CodeCleaning
+2024-07-05 17:02:45 [INFO] 
+Code running:
+```
+def extract_value(d, keys):
+    for k in keys.split('.'):
+        if k in d:
+            d = d[k]
+        else:
+            return None
+    return d
+
+
+new_df = pd.DataFrame(columns=['name', 'env_name', 'key', 'value'])
+for df in dfs:
+    for _, row in df.iterrows():
+        name = row['name']
+        env_name = row['env_name']
+        json_str = row['vars']
+        data = json.loads(json_str)
+        value = extract_value(data, 'spring.datasource.username')
+        if value is not None:
+            new_df = new_df.append({'name': name, 'env_name': env_name, 'key': 'spring.datasource.username', 'value': value}, ignore_index=True)
+new_df = new_df.drop_duplicates()
+result = {'type': 'dataframe', 'value': new_df}
+result
+        ```
+2024-07-05 17:02:45 [INFO] Executing Step 6: CodeExecution
+2024-07-05 17:02:45 [INFO] Executing Step 7: ResultValidation
+2024-07-05 17:02:45 [INFO] Answer: {'type': 'dataframe', 'value': Empty DataFrame
+Columns: [name, env_name, key, value]
+Index: []}
+2024-07-05 17:02:45 [INFO] Executing Step 8: ResultParsing
+2024-07-05 17:08:58 [INFO] Question: 表的vars是一列json格式的数据，他会有多层结构，请逐层分析，提取出所有key为"spring.datasource.username"的值，生成一个name,env_name,key的新表
+2024-07-05 17:09:00 [INFO] Running PandasAI with local LLM...
+2024-07-05 17:09:00 [INFO] Prompt ID: ae50849a-2cff-41c2-b776-8cc744491507
+2024-07-05 17:09:00 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-07-05 17:09:00 [INFO] Executing Step 0: ValidatePipelineInput
+2024-07-05 17:09:00 [INFO] Executing Step 1: CacheLookup
+2024-07-05 17:09:00 [INFO] Using cached response
+2024-07-05 17:09:00 [INFO] Executing Step 2: PromptGeneration
+2024-07-05 17:09:00 [INFO] Executing Step 2: Skipping...
+2024-07-05 17:09:00 [INFO] Executing Step 3: CodeGenerator
+2024-07-05 17:09:00 [INFO] Executing Step 3: Skipping...
+2024-07-05 17:09:00 [INFO] Executing Step 4: CachePopulation
+2024-07-05 17:09:00 [INFO] Executing Step 4: Skipping...
+2024-07-05 17:09:00 [INFO] Executing Step 5: CodeCleaning
+2024-07-05 17:09:00 [INFO] 
+Code running:
+```
+def extract_value(d, keys):
+    for k in keys.split('.'):
+        if k in d:
+            d = d[k]
+        else:
+            return None
+    return d
+
+
+new_df = pd.DataFrame(columns=['name', 'env_name', 'key', 'value'])
+for df in dfs:
+    for _, row in df.iterrows():
+        name = row['name']
+        env_name = row['env_name']
+        json_str = row['vars']
+        data = json.loads(json_str)
+        value = extract_value(data, 'spring.datasource.username')
+        if value is not None:
+            new_df = new_df.append({'name': name, 'env_name': env_name, 'key': 'spring.datasource.username', 'value': value}, ignore_index=True)
+new_df = new_df.drop_duplicates()
+result = {'type': 'dataframe', 'value': new_df}
+result
+        ```
+2024-07-05 17:09:00 [INFO] Executing Step 6: CodeExecution
+2024-07-05 17:09:00 [INFO] Executing Step 7: ResultValidation
+2024-07-05 17:09:01 [INFO] Answer: {'type': 'dataframe', 'value': Empty DataFrame
+Columns: [name, env_name, key, value]
+Index: []}
+2024-07-05 17:09:01 [INFO] Executing Step 8: ResultParsing
+2024-07-08 10:07:05 [INFO] Question: 表的vars是一列json格式的数据，他会有多层结构，请逐层分析，提取出所有key为"spring.datasource.username"的值，生成一个name,env_name,key的新表
+2024-07-08 10:07:08 [INFO] Running PandasAI with local LLM...
+2024-07-08 10:07:08 [INFO] Prompt ID: d237a4a8-67ba-4a6e-b9ff-9211b920bb72
+2024-07-08 10:07:08 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-07-08 10:07:08 [INFO] Executing Step 0: ValidatePipelineInput
+2024-07-08 10:07:08 [INFO] Executing Step 1: CacheLookup
+2024-07-08 10:07:08 [INFO] Using cached response
+2024-07-08 10:07:08 [INFO] Executing Step 2: PromptGeneration
+2024-07-08 10:07:08 [INFO] Executing Step 2: Skipping...
+2024-07-08 10:07:08 [INFO] Executing Step 3: CodeGenerator
+2024-07-08 10:07:08 [INFO] Executing Step 3: Skipping...
+2024-07-08 10:07:08 [INFO] Executing Step 4: CachePopulation
+2024-07-08 10:07:08 [INFO] Executing Step 4: Skipping...
+2024-07-08 10:07:08 [INFO] Executing Step 5: CodeCleaning
+2024-07-08 10:07:08 [INFO] 
+Code running:
+```
+def extract_value(d, keys):
+    for k in keys.split('.'):
+        if k in d:
+            d = d[k]
+        else:
+            return None
+    return d
+
+
+new_df = pd.DataFrame(columns=['name', 'env_name', 'key', 'value'])
+for df in dfs:
+    for _, row in df.iterrows():
+        name = row['name']
+        env_name = row['env_name']
+        json_str = row['vars']
+        data = json.loads(json_str)
+        value = extract_value(data, 'spring.datasource.username')
+        if value is not None:
+            new_df = new_df.append({'name': name, 'env_name': env_name, 'key': 'spring.datasource.username', 'value': value}, ignore_index=True)
+new_df = new_df.drop_duplicates()
+result = {'type': 'dataframe', 'value': new_df}
+result
+        ```
+2024-07-08 10:07:08 [INFO] Executing Step 6: CodeExecution
+2024-07-08 10:07:08 [INFO] Executing Step 7: ResultValidation
+2024-07-08 10:07:08 [INFO] Answer: {'type': 'dataframe', 'value': Empty DataFrame
+Columns: [name, env_name, key, value]
+Index: []}
+2024-07-08 10:07:08 [INFO] Executing Step 8: ResultParsing
